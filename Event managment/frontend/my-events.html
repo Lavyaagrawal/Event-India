@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Events - EventIndia</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span class="icon">&#128197;</span>
+            <span class="brand">Event<span class="highlight">India</span></span>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="explore.html">Explore Events</a>
+            <a href="create.html">Create Event</a>
+        </nav>
+        <div class="search-profile">
+            <div id="profileSection" class="profile-section">
+                <button class="profile-btn" id="profileBtn">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile">
+                    <span class="profile-name">User Name</span>
+                </button>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="profile.html" class="dropdown-item">
+                        <i class="fas fa-user"></i> My Profile
+                    </a>
+                    <a href="my-events.html" class="dropdown-item active">
+                        <i class="fas fa-calendar"></i> My Events
+                    </a>
+                    <button id="logoutBtn" class="dropdown-item">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="my-events-page">
+        <div class="my-events-container">
+            <div class="my-events-header">
+                <h1>My Events</h1>
+                <div class="events-filter">
+                    <button class="filter-btn active" data-filter="all">All Events</button>
+                    <button class="filter-btn" data-filter="upcoming">Upcoming</button>
+                    <button class="filter-btn" data-filter="past">Past</button>
+                    <button class="filter-btn" data-filter="created">Created</button>
+                </div>
+            </div>
+
+            <div class="events-grid">
+                <!-- Upcoming Events -->
+                <div class="event-card upcoming">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="TechCon India 2025">
+                        <span class="badge badge-upcoming">Upcoming</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>TechCon India 2025</h3>
+                        <p class="event-date"><i class="far fa-calendar"></i> Sat, Jun 7, 2025</p>
+                        <p class="event-location"><i class="fas fa-map-marker-alt"></i> Bangalore, Karnataka</p>
+                        <div class="event-actions">
+                            <button class="action-btn view">View Details</button>
+                            <button class="action-btn cancel">Cancel Registration</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Created Event -->
+                <div class="event-card created">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80" alt="Delhi Music Festival">
+                        <span class="badge badge-created">Created</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>Delhi Music Festival</h3>
+                        <p class="event-date"><i class="far fa-calendar"></i> Fri, May 23, 2025</p>
+                        <p class="event-location"><i class="fas fa-map-marker-alt"></i> New Delhi, Delhi</p>
+                        <div class="event-actions">
+                            <button class="action-btn edit">Edit Event</button>
+                            <button class="action-btn manage">Manage Registrations</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Past Event -->
+                <div class="event-card past">
+                    <div class="event-image">
+                        <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=800&q=80" alt="Mumbai Food Festival">
+                        <span class="badge badge-past">Past</span>
+                    </div>
+                    <div class="event-details">
+                        <h3>Mumbai Food Festival</h3>
+                        <p class="event-date"><i class="far fa-calendar"></i> Wed, May 28, 2025</p>
+                        <p class="event-location"><i class="fas fa-map-marker-alt"></i> Mumbai, Maharashtra</p>
+                        <div class="event-actions">
+                            <button class="action-btn view">View Details</button>
+                            <button class="action-btn feedback">Give Feedback</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="no-events" style="display: none;">
+                <i class="fas fa-calendar-times"></i>
+                <h2>No Events Found</h2>
+                <p>You haven't registered for any events yet.</p>
+                <a href="explore.html" class="explore-btn">Explore Events</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="javascript/my-events.js"></script>
+</body>
+</html> 

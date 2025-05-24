@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Events | EventIndia</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/explore.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script defer src="javascript/script.js"></script>
+    <script defer src="javascript/explore.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span class="icon">&#128197;</span>
+            <span class="brand">Event<span class="highlight">India</span></span>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="explore.html" class="active">Explore Events</a>
+            <a href="create.html">Create Event</a>
+        </nav>
+        <div class="search-profile">
+            <!-- Login/Signup Button (shown when not logged in) -->
+            <button id="loginBtn" class="auth-btn">Login / Signup</button>
+            
+            <!-- Profile Section (shown when logged in) -->
+            <div id="profileSection" class="profile-section" style="display: none;">
+                <button class="profile-btn" id="profileBtn">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile">
+                    <span class="profile-name">User Name</span>
+                </button>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="profile.html" class="dropdown-item">
+                        <i class="fas fa-user"></i> My Profile
+                    </a>
+                    <a href="my-events.html" class="dropdown-item">
+                        <i class="fas fa-calendar"></i> My Events
+                    </a>
+                    <button id="logoutBtn" class="dropdown-item">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="explore-hero">
+            <h1>Explore Events</h1>
+            <div class="explore-search-bar">
+                <input type="text" placeholder="Search events by name, category, or keywords">
+                <button>Search</button>
+            </div>
+        </section>
+        <section class="explore-main">
+            <aside class="explore-filters">
+                <h3>Filters</h3>
+                <div class="filter-group">
+                    <div class="filter-label">Categories</div>
+                    <div class="filter-options">
+                        <label><input type="checkbox" id="select-all-categories"> <strong>Select All</strong></label>
+                        <label><input type="checkbox" name="category" value="Technology"> Technology</label>
+                        <label><input type="checkbox" name="category" value="Music"> Music</label>
+                        <label><input type="checkbox" name="category" value="Cultural"> Cultural</label>
+                        <label><input type="checkbox" name="category" value="Workshop"> Workshop</label>
+                        <label><input type="checkbox" name="category" value="Food & Drink"> Food & Drink</label>
+                        <label><input type="checkbox" name="category" value="Business"> Business</label>
+                        <label><input type="checkbox" name="category" value="Sports"> Sports</label>
+                        <label><input type="checkbox" name="category" value="Art"> Art</label>
+                        <label><input type="checkbox" name="category" value="Health & Wellness"> Health & Wellness</label>
+                        <label><input type="checkbox" name="category" value="Education"> Education</label>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <div class="filter-label">Location</div>
+                    <label>City
+                        <select id="city-select">
+                            <option>All Cities</option>
+                            <option>Mumbai</option>
+                            <option>Delhi</option>
+                            <option>Bangalore</option>
+                            <option>Hyderabad</option>
+                            <option>Chennai</option>
+                            <option>Kolkata</option>
+                            <option>Pune</option>
+                            <option>Ahmedabad</option>
+                        </select>
+                    </label>
+                    <label>State
+                        <select id="state-select">
+                            <option>All States</option>
+                            <option>Maharashtra</option>
+                            <option>Delhi</option>
+                            <option>Karnataka</option>
+                            <option>Telangana</option>
+                            <option>Tamil Nadu</option>
+                            <option>West Bengal</option>
+                            <option>Gujarat</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="filter-group">
+                    <div class="filter-label">Event Date</div>
+                    <label>From <input type="date" id="date-from"></label>
+                    <label>To <input type="date" id="date-to"></label>
+                </div>
+                <div class="filter-group">
+                    <div class="filter-label">Type of Event</div>
+                    <label><input type="checkbox"> Virtual Events</label>
+                    <label><input type="checkbox"> Free Events</label>
+                </div>
+                <div class="filter-group">
+                    <div class="filter-label">Price Range</div>
+                    <div style="display: flex; gap: 8px;">
+                        <input type="number" placeholder="0" min="0" style="width: 60px;"> -
+                        <input type="number" placeholder="10000" min="0" style="width: 80px;">
+                    </div>
+                </div>
+                <button class="apply-filters-btn">Apply Filters</button>
+            </aside>
+            <section class="explore-events">
+                <!-- Upcoming Events Section -->
+                <div class="upcoming-events-section">
+                    <div class="section-header">
+                        <h2>Upcoming Events</h2>
+                        <p class="section-subtitle">Events happening in the next 10 days</p>
+                    </div>
+                    <div class="upcoming-events-grid">
+                        <!-- Upcoming events will be dynamically inserted here -->
+                    </div>
+                </div>
+
+                <!-- All Events Section -->
+                <div class="all-events-section">
+                    <div class="explore-events-header">
+                        <h2>All Events</h2>
+                        <div class="explore-sort">
+                            Sort by:
+                            <select>
+                                <option>Date (Newest)</option>
+                                <option>Date (Oldest)</option>
+                                <option>Price (Low to High)</option>
+                                <option>Price (High to Low)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="explore-events-grid">
+                        <!-- All events will be dynamically inserted here -->
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+    <footer class="footer-section">
+        <div class="footer-main">
+            <div class="footer-col footer-brand">
+                <div class="footer-logo"><span class="icon">&#128197;</span> <span class="brand">Event<span class="highlight">India</span></span></div>
+                <p>Discover and manage events across India. From concerts to workshops, conferences to meetups - find it all in one place.</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Browse Events</a></li>
+                    <li><a href="#">Create Event</a></li>
+                    <li><a href="#">Log In</a></li>
+                    <li><a href="#">Sign Up</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#">Technology</a></li>
+                    <li><a href="#">Music</a></li>
+                    <li><a href="#">Business</a></li>
+                    <li><a href="#">Food & Drink</a></li>
+                    <li><a href="#">Cultural</a></li>
+                    <li><a href="#">Sports</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li><span style="display:inline-block;margin-right:8px;">&#9993;</span>support@eventindia.com</li>
+                    <li><span style="display:inline-block;margin-right:8px;">&#128222;</span>+91 98765 43210</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2025 EventIndia. All rights reserved.</span>
+            <div class="footer-policies">
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Login</button>
+                <button class="auth-tab" data-tab="signup">Sign Up</button>
+            </div>
+            
+            <div id="loginTab" class="auth-tab-content active">
+                <h2>Login</h2>
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label>Email or Username</label>
+                        <input type="text" id="loginIdentifier" placeholder="Enter your email or username" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="auth-btn">Login</button>
+                </form>
+            </div>
+            
+            <div id="signupTab" class="auth-tab-content">
+                <h2>Create New Account</h2>
+                <form id="signupForm" class="auth-form">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="signupFullName" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" id="signupName" placeholder="Username" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="signupEmail" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="signupPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="auth-btn">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script defer src="javascript/auth.js"></script>
+</body>
+</html> 

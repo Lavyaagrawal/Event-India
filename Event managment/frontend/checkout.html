@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | EventIndia</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/event.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap">
+    <style>
+        .checkout-container {
+            max-width: 520px;
+            margin: 48px auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(44,24,82,0.10);
+            padding: 40px 32px 32px 32px;
+        }
+        .checkout-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 18px;
+        }
+        .checkout-event {
+            margin-bottom: 18px;
+        }
+        .checkout-event-name {
+            font-size: 1.18rem;
+            font-weight: 600;
+            color: #6c63ff;
+        }
+        .checkout-summary {
+            background: #f8f9fc;
+            border-radius: 10px;
+            padding: 18px 18px 12px 18px;
+            margin-bottom: 24px;
+            border: 1.5px solid #ececec;
+        }
+        .checkout-summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 1.01rem;
+            color: #444;
+        }
+        .checkout-summary-total {
+            font-size: 1.18rem;
+            font-weight: 700;
+            color: #6c63ff;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .checkout-qr-section {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .checkout-qr-section img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            border-radius: 12px;
+            border: 2px solid #ececec;
+            background: #fff;
+            margin-bottom: 10px;
+        }
+        .checkout-qr-label {
+            font-size: 1.08rem;
+            color: #444;
+            margin-bottom: 6px;
+        }
+        .checkout-instructions {
+            font-size: 0.98rem;
+            color: #666;
+            margin-bottom: 18px;
+        }
+        .checkout-paid-btn {
+            width: 100%;
+            background: #6c63ff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 15px 0;
+            font-size: 1.13rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 6px;
+            margin-bottom: 10px;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(108,99,255,0.10);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            letter-spacing: 0.2px;
+        }
+        .checkout-paid-btn:hover {
+            background: #574fd6;
+        }
+        .checkout-success {
+            text-align: center;
+            color: #28a745;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-top: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="checkout-container">
+        <div class="checkout-title">Complete Your Booking</div>
+        <div class="checkout-event">
+            <div class="checkout-event-name" id="checkoutEventName">Event Name</div>
+            <div id="checkoutEventDate" style="color:#888;font-size:0.98rem;margin-bottom:2px;">Event Date</div>
+            <div id="checkoutTicketType" style="color:#444;font-size:1.01rem;">Ticket: <b>Type</b> &times; <span id="checkoutTicketQty">1</span></div>
+        </div>
+        <div class="checkout-summary">
+            <div class="checkout-summary-row"><span id="checkoutSummaryTickets">2 x General Admission</span><span id="checkoutSummaryTicketsPrice">₹0</span></div>
+            <div class="checkout-summary-row"><span>Delivery - eTicket</span><span>₹0</span></div>
+            <div style="border-bottom:1.5px solid #e0e0e0;margin:14px 0 10px 0;"></div>
+            <div class="checkout-summary-total">Total <span id="checkoutSummaryTotal">₹0</span></div>
+        </div>
+        <div style="margin-bottom:18px;"></div>
+        <div class="checkout-pay-card-section">
+            <div style="font-size:1.13rem;font-weight:600;color:#222;margin-bottom:10px;">Pay by card</div>
+            <input type="text" class="checkout-card-input" placeholder="Card number*" maxlength="19" style="width:100%;padding:14px 16px;border-radius:18px;border:none;background:#f4f4f4;font-size:1.08rem;margin-bottom:18px;outline:none;box-shadow:0 1px 4px rgba(44,24,82,0.04);">
+            <button class="checkout-paid-btn" id="proceedToPayBtn">Proceed to Pay</button>
+        </div>
+        <div class="checkout-success" id="checkoutSuccessMsg" style="display:none;">Payment received! Your booking is confirmed.</div>
+    </div>
+    <script>
+    // Demo: Load checkout data from localStorage (set by event page JS)
+    document.addEventListener('DOMContentLoaded', function() {
+        const eventData = JSON.parse(localStorage.getItem('checkoutEvent'));
+        if (!eventData) {
+            document.querySelector('.checkout-container').innerHTML = '<div style="text-align:center;padding:40px 0;">No checkout data found.<br><a href="explore.html">Back to Events</a></div>';
+            return;
+        }
+        document.getElementById('checkoutEventName').textContent = eventData.eventName;
+        document.getElementById('checkoutEventDate').textContent = eventData.eventDate;
+        document.getElementById('checkoutSummaryTickets').textContent = `${eventData.quantity} x ${eventData.ticketType}`;
+        document.getElementById('checkoutSummaryTicketsPrice').textContent = '₹' + (eventData.ticketPrice * eventData.quantity);
+        document.getElementById('checkoutSummaryTotal').textContent = '₹' + (eventData.ticketPrice * eventData.quantity);
+        document.getElementById('proceedToPayBtn').onclick = function() {
+            window.location.href = 'payment.html';
+        };
+    });
+    </script>
+</body>
+</html> 

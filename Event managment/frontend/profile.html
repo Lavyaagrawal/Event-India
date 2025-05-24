@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - EventIndia</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .profile-content {
+            padding: 3rem;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 16px rgba(44,24,82,0.07);
+        }
+
+        .profile-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .profile-form {
+            max-width: 800px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            letter-spacing: 0.2px;
+        }
+
+        .modern-input,
+        .modern-textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1rem;
+            color: #222;
+            transition: all 0.2s ease;
+            background: #f8f9fa;
+        }
+
+        .modern-input:hover,
+        .modern-textarea:hover {
+            border-color: #d0d0d0;
+            background: #f5f5f5;
+        }
+
+        .modern-input:focus,
+        .modern-textarea:focus {
+            outline: none;
+            border-color: #6c63ff;
+            box-shadow: 0 0 0 4px rgba(108,99,255,0.1);
+            background: #fff;
+        }
+
+        .modern-textarea {
+            resize: vertical;
+            min-height: 140px;
+            line-height: 1.5;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1.25rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        .cancel-btn,
+        .save-btn {
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-width: 140px;
+            text-align: center;
+        }
+
+        .cancel-btn {
+            background: #f1f1f1;
+            color: #666;
+            border: none;
+        }
+
+        .cancel-btn:hover {
+            background: #e5e5e5;
+            color: #444;
+        }
+
+        .save-btn {
+            background: #6c63ff;
+            color: #fff;
+            border: none;
+        }
+
+        .save-btn:hover {
+            background: #5a52d5;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .profile-content {
+                padding: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .form-actions {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .cancel-btn,
+            .save-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span class="icon">&#128197;</span>
+            <span class="brand">Event<span class="highlight">India</span></span>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="explore.html">Explore Events</a>
+            <a href="create.html">Create Event</a>
+        </nav>
+        <div class="search-profile">
+            <div id="profileSection" class="profile-section">
+                <button class="profile-btn" id="profileBtn">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile">
+                    <span class="profile-name">User Name</span>
+                </button>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="profile.html" class="dropdown-item active">
+                        <i class="fas fa-user"></i> My Profile
+                    </a>
+                    <a href="my-events.html" class="dropdown-item">
+                        <i class="fas fa-calendar"></i> My Events
+                    </a>
+                    <button id="logoutBtn" class="dropdown-item">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="profile-page">
+        <div class="profile-container">
+            <div class="profile-sidebar">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        <img src="img/default-avatar.png" alt="Profile Picture">
+                        <button class="change-avatar-btn">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                    </div>
+                    <h2 class="profile-name"></h2>
+                    <p class="profile-email"></p>
+                </div>
+                <nav class="profile-nav">
+                    <a href="#personal-info" class="active">Personal Information</a>
+                    <a href="#security">Security</a>
+                    <a href="#notifications">Notifications</a>
+                    <a href="#preferences">Preferences</a>
+                </nav>
+            </div>
+
+            <div class="profile-content">
+                <section id="personal-info" class="profile-section active">
+                    <h2>Personal Information</h2>
+                    <form class="profile-form" id="personalInfoForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input type="text" id="fullName" name="fullName" class="modern-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" class="modern-input">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" placeholder="Change password" class="modern-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Location</label>
+                                <input type="text" id="location" name="location" class="modern-input">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="bio">Bio</label>
+                            <textarea id="bio" name="bio" rows="4" class="modern-textarea"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="cancel-btn">Cancel</button>
+                            <button type="submit" class="save-btn">Save Changes</button>
+                        </div>
+                    </form>
+                </section>
+
+                <section id="security" class="profile-section">
+                    <h2>Security Settings</h2>
+                    <form class="profile-form" id="securityForm">
+                        <div class="form-group">
+                            <label for="currentPassword">Current Password</label>
+                            <input type="password" id="currentPassword" name="currentPassword">
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">New Password</label>
+                            <input type="password" id="newPassword" name="newPassword">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm New Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword">
+                        </div>
+                        <button type="submit" class="save-btn">Update Password</button>
+                    </form>
+                </section>
+
+                <section id="notifications" class="profile-section">
+                    <h2>Notification Preferences</h2>
+                    <div class="notification-settings">
+                        <div class="notification-item">
+                            <div class="notification-info">
+                                <h3>Event Reminders</h3>
+                                <p>Get notified about upcoming events you're interested in</p>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" name="eventReminders" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-info">
+                                <h3>New Events</h3>
+                                <p>Get notified about new events in your area</p>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" name="newEvents" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-info">
+                                <h3>Event Updates</h3>
+                                <p>Get notified about changes to events you're attending</p>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" name="eventUpdates" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="preferences" class="profile-section">
+                    <h2>Preferences</h2>
+                    <div class="preferences-settings">
+                        <div class="preference-item">
+                            <h3>Event Categories</h3>
+                            <div class="category-tags">
+                                <label class="category-tag">
+                                    <input type="checkbox" name="categories" value="technology" checked> Technology
+                                </label>
+                                <label class="category-tag">
+                                    <input type="checkbox" name="categories" value="music" checked> Music
+                                </label>
+                                <label class="category-tag">
+                                    <input type="checkbox" name="categories" value="business"> Business
+                                </label>
+                                <label class="category-tag">
+                                    <input type="checkbox" name="categories" value="food"> Food & Drink
+                                </label>
+                            </div>
+                        </div>
+                        <div class="preference-item">
+                            <h3>Location Preferences</h3>
+                            <div class="location-preferences">
+                                <input type="text" id="locationPreferences" name="locationPreferences" placeholder="Enter your preferred locations" value="Mumbai, Delhi, Bangalore">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="javascript/profile.js"></script>
+</body>
+</html> 

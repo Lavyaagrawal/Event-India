@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechCon India 2025 | EventIndia</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/event.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:700,400&display=swap">
+    <script defer src="javascript/event.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span class="icon">&#128197;</span>
+            <span class="brand">Event<span class="highlight">India</span></span>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="explore.html">Explore Events</a>
+            <a href="create.html">Create Event</a>
+        </nav>
+        <div class="search-profile">
+            <!-- Login/Signup Button (shown when not logged in) -->
+            <button id="loginBtn" class="auth-btn">Login / Signup</button>
+            
+            <!-- Profile Section (shown when logged in) -->
+            <div id="profileSection" class="profile-section" style="display: none;">
+                <button class="profile-btn" id="profileBtn">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile">
+                    <span class="profile-name">User Name</span>
+                </button>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="profile.html" class="dropdown-item">
+                        <i class="fas fa-user"></i> My Profile
+                    </a>
+                    <a href="my-events.html" class="dropdown-item">
+                        <i class="fas fa-calendar"></i> My Events
+                    </a>
+                    <button id="logoutBtn" class="dropdown-item">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="event-breadcrumbs">
+            <a href="index.html">Home</a> &gt; <a href="explore.html">Events</a> &gt; <a href="explore.html?category=Technology">Technology</a>
+        </div>
+        <div class="event-content-wrapper">
+            <section class="event-header-section event-card">
+                <h1 class="event-title">TechCon India 2025</h1>
+                <div class="event-meta-main">
+                    <span class="event-date">Sat, Jun 7, 2025 - Tue, Jun 10, 2025</span>
+                    <span class="event-time">09:00 AM</span>
+                    <span class="event-location">Bangalore International Exhibition Centre, Bangalore</span>
+                </div>
+                <div class="event-organizer">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rahul Sharma" class="organizer-avatar">
+                    <span>By <b>Rahul Sharma</b></span>
+                    <span class="badge badge-category tech">Technology</span>
+                </div>
+                <div class="event-actions">
+                    <button class="event-action-btn">&#9825; Save</button>
+                    <button class="event-action-btn">&#128257; Share</button>
+                </div>
+            </section>
+            <div class="event-main-content">
+                <div class="event-main-left event-card">
+                    <div class="event-gallery">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="TechCon India 2025" class="event-main-img">
+                        <div class="event-thumbnails">
+                            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Thumb 1">
+                            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Thumb 2">
+                            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Thumb 3">
+                        </div>
+                    </div>
+                    <div class="event-tabs-bar">
+                        <button class="event-tab active" data-tab="details">Event Details</button>
+                        <button class="event-tab" data-tab="venue">Venue & Location</button>
+                        <button class="event-tab" data-tab="organizer">Organizer</button>
+                    </div>
+                    <div class="event-tab-content" id="tab-details">
+                        <h3>About This Event</h3>
+                        <p>
+                            Join us for the biggest tech conference in India! TechCon brings together the brightest minds in technology for three days of learning, networking, and inspiration.<br>
+                            Featured speakers include CTOs from major tech companies, renowned developers, and emerging startups. Topics will cover AI, machine learning, blockchain, cloud computing, and more.<br>
+                            The conference will include hands-on workshops, panel discussions, product demos, and networking events. Perfect for developers, engineers, product managers, and tech enthusiasts....
+                        </p>
+                        <a href="#" class="read-more">Read more</a>
+                        <div class="event-tags">
+                            <span class="event-tag">tech</span>
+                            <span class="event-tag">conference</span>
+                            <span class="event-tag">networking</span>
+                            <span class="event-tag">AI</span>
+                            <span class="event-tag">machine learning</span>
+                        </div>
+                    </div>
+                    <div class="event-tab-content" id="tab-venue" style="display:none;">
+                        <h3>Venue & Location</h3>
+                        <p>Bangalore International Exhibition Centre, 10th Mile, Tumkur Road, Madavara Post, Dasanapura Hobli, Bangalore, Karnataka 562123</p>
+                    </div>
+                    <div class="event-tab-content" id="tab-organizer" style="display:none;">
+                        <h3>Organizer</h3>
+                        <p>Rahul Sharma<br>Email: rahul.sharma@email.com<br>Phone: +91 98765 43210</p>
+                    </div>
+                </div>
+                <aside class="event-main-right event-card">
+                    <!-- Booking/Ticket Section: Modern Amazon-style -->
+                    <div class="event-tickets" id="event-tickets">
+                        <h3>Tickets & Registration</h3>
+                        <div id="ticket-list"></div>
+                        <div class="booking-summary" id="booking-summary">
+                            <div class="summary-tickets"></div>
+                            <div class="summary-total"></div>
+                            <button class="book-now-btn amazon-btn" id="bookNowBtn">Proceed to Payment</button>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+    <footer class="footer-section">
+        <div class="footer-main">
+            <div class="footer-col footer-brand">
+                <div class="footer-logo"><span class="icon">&#128197;</span> <span class="brand">Event<span class="highlight">India</span></span></div>
+                <p>Discover and manage events across India. From concerts to workshops, conferences to meetups - find it all in one place.</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">Browse Events</a></li>
+                    <li><a href="#">Create Event</a></li>
+                    <li><a href="#">Log In</a></li>
+                    <li><a href="#">Sign Up</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#">Technology</a></li>
+                    <li><a href="#">Music</a></li>
+                    <li><a href="#">Business</a></li>
+                    <li><a href="#">Food & Drink</a></li>
+                    <li><a href="#">Cultural</a></li>
+                    <li><a href="#">Sports</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li><a href="mailto:support@eventindia.com">support@eventindia.com</a></li>
+                    <li><a href="tel:+919876543210">+91 98765 43210</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2025 EventIndia. All rights reserved.</span>
+            <div class="footer-policies">
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+    <script defer src="javascript/auth.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const event = JSON.parse(localStorage.getItem('currentEvent'));
+        const ticketList = document.getElementById('ticket-list');
+        const summaryTickets = document.querySelector('.summary-tickets');
+        const summaryTotal = document.querySelector('.summary-total');
+        const bookNowBtn = document.getElementById('bookNowBtn');
+        let selected = [0, 0, 0];
+        function renderTickets() {
+            ticketList.innerHTML = '';
+            event.tickets.forEach((t, i) => {
+                const card = document.createElement('div');
+                card.className = 'ticket-card';
+                card.innerHTML = `
+                    <div class="ticket-info">
+                        <div class="ticket-type">${t.type}</div>
+                        <div class="ticket-desc">${t.desc}</div>
+                    </div>
+                    <div class="ticket-side">
+                        <div class="ticket-price">₹${t.price}</div>
+                        <div class="ticket-qty-label">Quantity:</div>
+                        <div class="ticket-quantity-row">
+                            <button class="ticket-quantity-btn" data-i="${i}" data-delta="-1">-</button>
+                            <span class="ticket-quantity-value" id="qty-${i}">${selected[i]}</span>
+                            <button class="ticket-quantity-btn" data-i="${i}" data-delta="1">+</button>
+                        </div>
+                    </div>
+                `;
+                ticketList.appendChild(card);
+            });
+            ticketList.querySelectorAll('.ticket-quantity-btn').forEach(btn => {
+                btn.onclick = function() {
+                    const i = +btn.getAttribute('data-i');
+                    const delta = +btn.getAttribute('data-delta');
+                    selected[i] = Math.max(0, Math.min(10, selected[i] + delta));
+                    document.getElementById('qty-' + i).textContent = selected[i];
+                    renderSummary();
+                };
+            });
+        }
+        function renderSummary() {
+            let total = 0;
+            let lines = [];
+            event.tickets.forEach((t, i) => {
+                if (selected[i] > 0) {
+                    lines.push(`<div>${t.type} × ${selected[i]} <span style='float:right;'>₹${t.price * selected[i]}</span></div>`);
+                    total += t.price * selected[i];
+                }
+            });
+            summaryTickets.innerHTML = lines.length ? lines.join('') : '<div style="color:#888;">No tickets selected</div>';
+            summaryTotal.innerHTML = `<b>Total:</b> ₹${total}`;
+            bookNowBtn.disabled = total === 0;
+        }
+        bookNowBtn.onclick = function() {
+            // Save booking info to localStorage for payment page
+            localStorage.setItem('pendingBooking', JSON.stringify({
+                eventId: event.id,
+                tickets: event.tickets.map((t, i) => ({...t, quantity: selected[i]})),
+                total: event.tickets.reduce((sum, t, i) => sum + t.price * selected[i], 0)
+            }));
+            window.location.href = 'payment.html';
+        };
+        renderTickets();
+        renderSummary();
+    });
+    </script>
+</body>
+</html> 
