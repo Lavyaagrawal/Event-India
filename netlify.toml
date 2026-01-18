@@ -1,0 +1,33 @@
+# Netlify configuration file
+[build]
+  # Publish directory - Netlify will serve files from this folder
+  publish = "Event managment/frontend"
+  
+  # Base directory - where Netlify should run build commands from
+  base = "Event managment/frontend"
+
+# Redirect rules for SPA routing (optional - uncomment if needed)
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
+
+# Headers for better security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache static assets
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/javascript/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
