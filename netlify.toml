@@ -1,10 +1,8 @@
 # Netlify configuration file
 [build]
   # Publish directory - Netlify will serve files from this folder
+  # Since there's no build process, we only set the publish directory
   publish = "Event managment/frontend"
-  
-  # Base directory - where Netlify should run build commands from
-  base = "Event managment/frontend"
 
 # Redirect rules for SPA routing (optional - uncomment if needed)
 # [[redirects]]
